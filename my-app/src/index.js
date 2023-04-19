@@ -1,17 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 import './index.css';
-import App from './App';
-import { createBrowserRouter } from 'react-router-dom';
+import UserList from './pages/Userlist';
+import Album from './pages/Album'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+  <div>
+    <BrowserRouter>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/userlist">User List</Link>
+          </li>
+        </ul>
+      </nav>
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+      <Routes>
+        <Route path="/userlist" element={<UserList />} />
+        <Route path="/userlist/:album" element={<Album />} />
+      </Routes>
+    </BrowserRouter>
+  </div>
+);
