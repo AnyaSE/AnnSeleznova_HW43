@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchPosts } from "../api"
 import { Outlet, Link } from "react-router-dom";
+import AlbumPage from "./Album";
 
 export default function UserList(){
     const [posts, setPosts] = useState([]);
