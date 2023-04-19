@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchPosts } from "../api"
+import { Outlet, Link } from "react-router-dom";
 
 export default function UserList(){
     const [posts, setPosts] = useState([]);
@@ -22,6 +23,7 @@ export default function UserList(){
                     <p>id: {post.id}</p>
                     <p>{post.name}</p>
                     <p>{post.email}</p>
+                    <Link to="/album">Albums</Link>
                     <hr></hr>
                 </div>
             ))}
