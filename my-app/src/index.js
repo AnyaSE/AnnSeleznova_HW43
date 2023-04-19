@@ -1,18 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Userlist from './pages/Userlist';
-import Album from './pages/Album';
+import { createBrowserRouter, Route, Router, Routes } from "react-router-dom";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Album from "./pages/Album";
+import UserList from "./pages/Userlist";
 
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Userlist />} />
-        <Route path="/album" element={<Album />} />
-      </Routes>
-    </Router>
-  );
-}
+const routes = [
+  {
+    path: "/userlist",
+    element: <UserList/>,
+  },
+  {
+    path: "/album",
+    element: <Album/>,
+  },
+];
 
-export default App;
+const router = createBrowserRouter({
+  routeConfig: routes,
+});
+
+ReactDOM.render(
+  <Router router={router}>
+    <Routes>
+      {routes.map(({ path, Component }) => (
+        <Route key={path} path={path} Component={Component} />
+      ))}
+    </Routes>
+  </Router>,
+  document.getElementById("root")
+);
